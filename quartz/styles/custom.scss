@@ -1,3 +1,29 @@
 @use "./variables.scss" as *;
 
 // put your custom CSS here!
+
+// Make links to notes that do not exist yet visibly distinct.
+:root[saved-theme="light"] a.internal.broken {
+  color: #c62828;
+  opacity: 1;
+}
+
+:root[saved-theme="dark"] a.internal.broken {
+  color: #ff6b6b;
+  opacity: 1;
+}
+
+:root a.internal.broken:hover {
+  color: #ef5350;
+  opacity: 1;
+}
+
+// Abecedarium uses its muted colour for every paragraph in dark mode.
+// Keep article copy bright while making publication metadata more subdued.
+:root[saved-theme="dark"] body article.popover-hint p {
+  color: var(--text-normal);
+}
+
+:root[saved-theme="dark"] body .content-meta {
+  color: #656872;
+}
