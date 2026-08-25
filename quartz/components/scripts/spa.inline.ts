@@ -66,6 +66,20 @@ let isNavigating = false
 let p: DOMParser
 async function _navigate(url: URL, isBack: boolean = false) {
   isNavigating = true
+
+  if (!isBack) {
+    try {
+      const title =
+        document.querySelector<HTMLElement>("h1.article-title")?.innerText || document.title
+      sessionStorage.setItem(
+        "quartz-previous-page",
+        JSON.stringify({ url: window.location.href, title }),
+      )
+    } catch {
+      // Navigation must continue when session storage is unavailable.
+    }
+  }
+
   startLoading()
   p = p || new DOMParser()
   const contents = await fetchCanonical(url)
@@ -195,6 +209,22 @@ function createRouter() {
 }
 
 createRouter()
+
+// Keep the root breadcrumb in sync with the actual title of content/index.md.
+document.addEventListener("nav", () => {
+  if (typeof fetchData === "undefined") return
+
+  fetchData.then((index) => {
+    const rootTitle = index.index?.title
+    const rootBreadcrumb = document.querySelector<HTMLElement>(
+      ".breadcrumb-container .breadcrumb-element:first-child a",
+    )
+    if (rootTitle && rootBreadcrumb) {
+      rootBreadcrumb.innerText = rootTitle
+    }
+  })
+})
+
 notifyNav(getFullSlug(window))
 
 if (!customElements.get("route-announcer")) {

@@ -2,19 +2,27 @@
 
 // put your custom CSS here!
 
-// Make links to notes that do not exist yet visibly distinct.
-:root[saved-theme="light"] a.internal.broken {
-  color: #c62828;
+// Keep internal links text-coloured and distinguish them with subtle backgrounds.
+:root[saved-theme] body a.internal {
+  color: inherit;
+  background-color: rgba(90, 200, 220, 0.40);
+}
+
+:root[saved-theme] body a.internal:hover {
+  color: inherit;
+  background-color: rgba(90, 200, 220, 0.80);
+}
+
+// Missing notes use the same text colour with a faint red background.
+:root[saved-theme] body a.internal.broken {
+  color: inherit;
+  background-color: rgba(220, 50, 50, 0.40);
   opacity: 1;
 }
 
-:root[saved-theme="dark"] a.internal.broken {
-  color: #ff6b6b;
-  opacity: 1;
-}
-
-:root a.internal.broken:hover {
-  color: #ef5350;
+:root[saved-theme] body a.internal.broken:hover {
+  color: inherit;
+  background-color: rgba(220, 50, 50, 0.80);
   opacity: 1;
 }
 
@@ -26,4 +34,20 @@
 
 :root[saved-theme="dark"] body .content-meta {
   color: #656872;
+}
+
+// Give breadcrumbs the same visual breathing room as article metadata.
+.breadcrumb-container {
+  margin-bottom: 0.75rem;
+}
+
+// The 404 page builds its backlinks from the missing slug at runtime.
+body[data-slug="404"] .sidebar.right > :not(.not-found-backlinks) {
+  display: none;
+}
+
+.not-found-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
 }

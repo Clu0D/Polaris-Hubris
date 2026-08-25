@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics:
     provider: plausible
-  locale: en-US
+  locale: ru-RU
   baseUrl: clu0d.github.io/Polaris-Hubris
   ignorePatterns:
     - private
@@ -172,7 +172,7 @@ plugins:
       position: left
       priority: 50
   - source: "@quartz-community/graph"
-    enabled: true
+    enabled: false
     layout:
       position: right
       priority: 10
@@ -216,13 +216,16 @@ plugins:
       priority: 30
       group: toolbar
   - source: "@quartz-community/reader-mode"
-    enabled: true
+    enabled: false
     layout:
       position: left
       priority: 35
       group: toolbar
   - source: "@quartz-community/breadcrumbs"
     enabled: true
+    options:
+      rootName: Гордыня Поляриса
+      resolveFrontmatterTitle: true
     layout:
       position: beforeBody
       priority: 5
@@ -297,7 +300,6 @@ layout:
       template: default
       positions:
         beforeBody: []
-        right: []
     content: {}
     folder:
       exclude:
