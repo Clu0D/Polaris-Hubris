@@ -7,7 +7,7 @@ configuration:
   analytics:
     provider: plausible
   locale: en-US
-  baseUrl: clu0D/Polaris-Hubris
+  baseUrl: clu0d.github.io/Polaris-Hubris
   ignorePatterns:
     - private
     - templates
