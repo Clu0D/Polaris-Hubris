@@ -92,6 +92,7 @@ export default (() => {
         <link rel="icon" href={iconPath} />
         <meta name="description" content={description} />
         <meta name="generator" content="Quartz" />
+        {ctx.admin && <meta name="robots" content="noindex, nofollow, noarchive" />}
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

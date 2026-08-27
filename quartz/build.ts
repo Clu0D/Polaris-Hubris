@@ -22,6 +22,62 @@ import { getStaticResourcesFromPlugins } from "./plugins"
 import { randomIdNonSecure } from "./util/random"
 import { ChangeEvent } from "./plugins/types"
 import { minimatch } from "minimatch"
+import { QuartzConfig } from "./cfg"
+import { AdminComments } from "./plugins/transformers"
+
+const ADMIN_PATH = "admin"
+const ADMIN_BYPASSED_FILTERS = new Set(["RemoveDrafts", "ExplicitPublish"])
+
+function adminConfig(source: QuartzConfig): QuartzConfig {
+  const baseUrl = source.configuration.baseUrl?.replace(/\/+$/, "")
+
+  return {
+    configuration: {
+      ...source.configuration,
+      baseUrl: baseUrl ? `${baseUrl}/${ADMIN_PATH}` : undefined,
+    },
+    plugins: {
+      ...source.plugins,
+      transformers: [AdminComments(), ...source.plugins.transformers],
+      filters: source.plugins.filters.filter((plugin) => !ADMIN_BYPASSED_FILTERS.has(plugin.name)),
+      emitters: [...source.plugins.emitters],
+      pageTypes: source.plugins.pageTypes ? [...source.plugins.pageTypes] : undefined,
+    },
+  }
+}
+
+async function buildAdminSite(argv: Argv, allFiles: FilePath[]): Promise<void> {
+  const adminOutput = joinSegments(argv.output, ADMIN_PATH)
+  const adminArgv: Argv = {
+    ...argv,
+    output: adminOutput,
+    watch: false,
+    // Workers import the public config, while this build has a purpose-specific config.
+    concurrency: 1,
+  }
+  const adminCtx: BuildCtx = {
+    buildId: randomIdNonSecure(),
+    argv: adminArgv,
+    cfg: adminConfig(cfg),
+    allSlugs: allFiles.map((fp) => slugifyFilePath(fp)),
+    allFiles,
+    incremental: false,
+    virtualPages: [],
+    admin: true,
+  }
+
+  await rm(adminOutput, { recursive: true, force: true })
+  const markdownPaths = allFiles
+    .filter((fp) => fp.endsWith(".md"))
+    .sort()
+    .map((fp) => joinSegments(argv.directory, fp) as FilePath)
+  const parsedFiles = await parseMarkdown(adminCtx, markdownPaths)
+  reportSlugCollisions(parsedFiles)
+
+  // Only publication-gating filters are bypassed. Other configured filters retain their meaning.
+  const adminContent = filterContent(adminCtx, parsedFiles)
+  await emitContent(adminCtx, adminContent)
+}
 
 function reportSlugCollisions(content: ProcessedContent[]): void {
   const collisions = detectSlugCollisions(content)
@@ -95,6 +151,7 @@ async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
   const filteredContent = filterContent(ctx, parsedFiles)
 
   await emitContent(ctx, filteredContent)
+  await buildAdminSite(argv, allFiles)
   console.log(
     styleText("green", `Done processing ${markdownPaths.length} files in ${perf.timeSince()}`),
   )
@@ -352,6 +409,7 @@ async function rebuild(changes: ChangeEvent[], clientRefresh: () => void, buildD
     console.log(
       `Emitted ${emittedFiles} files to \`${argv.output}\` in ${perf.timeSince("rebuild")}`,
     )
+    await buildAdminSite(argv, ctx.allFiles)
     console.log(styleText("green", `Done rebuilding in ${perf.timeSince()}`))
     changes.splice(0, numChangesInBuild)
     clientRefresh()

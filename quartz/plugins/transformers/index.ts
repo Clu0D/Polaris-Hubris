@@ -1,1 +1,1 @@
-export {}
+export { AdminComments } from "./adminComments"

@@ -339,8 +339,13 @@ export function renderPage(
   const direction = i18n(cfg.locale).direction ?? "ltr"
   // During local dev (--serve), the dev server serves from root without the
   // baseUrl subpath, so basePath must be empty to avoid broken links.
-  const basePath =
-    componentData.ctx.argv.serve || !cfg.baseUrl
+  const basePath = componentData.ctx.admin
+    ? componentData.ctx.argv.serve
+      ? "/admin"
+      : cfg.baseUrl
+        ? new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
+        : "/admin"
+    : componentData.ctx.argv.serve || !cfg.baseUrl
       ? ""
       : new URL(`https://${cfg.baseUrl}`).pathname.replace(/\/$/, "")
   const doc = (
