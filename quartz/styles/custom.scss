@@ -13,15 +13,15 @@
   background-color: rgba(90, 200, 220, 0.80);
 }
 
-// Missing notes, including admin-only drafts on the public site, are red.
+// Missing notes, including admin-only drafts, keep normal text with a red background.
 :root[saved-theme] body a.internal.broken {
-  color: var(--text-error, #ce2222);
+  color: inherit;
   background-color: rgba(220, 50, 50, 0.40);
   opacity: 1;
 }
 
 :root[saved-theme] body a.internal.broken:hover {
-  color: var(--text-error-hover, #cb2c2c);
+  color: inherit;
   background-color: rgba(220, 50, 50, 0.80);
   opacity: 1;
 }

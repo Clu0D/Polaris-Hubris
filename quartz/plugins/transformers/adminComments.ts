@@ -29,12 +29,7 @@ const commentParser = unified()
   })
 
 function commentLabel(): MarkdownNode[] {
-  return [
-    {
-      type: "strong",
-      children: [{ type: "text", value: "Только для администраторов" }],
-    },
-  ]
+  return []
 }
 
 function parseComment(value: string): MarkdownNode[] {
@@ -98,7 +93,7 @@ function addDraftNotice(tree: HtmlRoot, draft: unknown): void {
     type: "element",
     tagName: "aside",
     properties: { className: ["admin-draft-notice"] },
-    children: [{ type: "text", value: "Только для администраторов · черновик" }],
+    children: [{ type: "text", value: "Мастерская заметка" }],
   })
 }
 
