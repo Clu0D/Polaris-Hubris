@@ -13,17 +13,22 @@
   background-color: rgba(90, 200, 220, 0.80);
 }
 
-// Missing notes use the same text colour with a faint red background.
+// Missing notes, including admin-only drafts on the public site, are red.
 :root[saved-theme] body a.internal.broken {
-  color: inherit;
+  color: var(--text-error, #ce2222);
   background-color: rgba(220, 50, 50, 0.40);
   opacity: 1;
 }
 
 :root[saved-theme] body a.internal.broken:hover {
-  color: inherit;
+  color: var(--text-error-hover, #cb2c2c);
   background-color: rgba(220, 50, 50, 0.80);
   opacity: 1;
+}
+
+// Theme blockquote rules reset left padding; keep citation text away from the border.
+html[saved-theme] body article blockquote:not(.callout) {
+  padding-inline-start: 1rem;
 }
 
 // Abecedarium uses its muted colour for every paragraph in dark mode.

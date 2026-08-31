@@ -24,6 +24,7 @@ import { ChangeEvent } from "./plugins/types"
 import { minimatch } from "minimatch"
 import { QuartzConfig } from "./cfg"
 import { AdminComments } from "./plugins/transformers"
+import { markUnpublishedLinks } from "./processors/links"
 
 const ADMIN_PATH = "admin"
 const ADMIN_BYPASSED_FILTERS = new Set(["RemoveDrafts", "ExplicitPublish"])
@@ -149,6 +150,7 @@ async function buildQuartz(argv: Argv, mut: Mutex, clientRefresh: () => void) {
   const parsedFiles = await parseMarkdown(ctx, filePaths)
   reportSlugCollisions(parsedFiles)
   const filteredContent = filterContent(ctx, parsedFiles)
+  markUnpublishedLinks(filteredContent, ctx.allFiles)
 
   await emitContent(ctx, filteredContent)
   await buildAdminSite(argv, allFiles)
@@ -347,6 +349,7 @@ async function rebuild(changes: ChangeEvent[], clientRefresh: () => void, buildD
       .map((file) => file.content)
     reportSlugCollisions(markdownContent)
     let processedFiles = filterContent(ctx, markdownContent)
+    markUnpublishedLinks(processedFiles, ctx.allFiles)
 
     let emittedFiles = 0
 
