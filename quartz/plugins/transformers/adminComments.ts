@@ -126,6 +126,7 @@ export const AdminComments: QuartzTransformerPlugin = () => ({
   margin-bottom: 0;
 }
 .admin-comment-label {
+  margin: -1em;
   color: var(--secondary);
   font-size: 0.8rem;
   text-transform: uppercase;
