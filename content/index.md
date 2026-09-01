@@ -3,7 +3,7 @@ title: Гордыня Поляриса
 ---
 Добро пожаловать на вики кампейна по [[https://www.daggerheart.com/|Daggerheart]] "Гордыня Поляриса" :P
 ## Важные материалы по системе
-* [Классы](https://daggerheart.su/class), [Родословные](https://daggerheart.su/ancestry), [Сообщества](https://daggerheart.su/community), [карты Домена](https://daggerheart.su/domain-card)
+* [Классы](https://daggerheart.su/class), [Родословные](https://daggerheart.su/ancestry), [Сообщества](https://daggerheart.su/community), [Карты Домена](https://daggerheart.su/domain-card)
 * [Термины из правил](https://daggerheart.su/rule)
 * [Полные правила (SRD)](https://daggerheart.su/rule/srd)
 ## Приключение
