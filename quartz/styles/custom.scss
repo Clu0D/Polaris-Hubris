@@ -46,6 +46,14 @@ html[saved-theme] body article blockquote:not(.callout) {
   margin-bottom: 0.75rem;
 }
 
+// Explorer folders without an authored landing page still open their generated listing,
+// but look muted so they are distinct from folders backed by a real note.
+.folder-container.folder-without-page div > a,
+.folder-container.folder-without-page div > a:hover,
+.folder-container.folder-without-page div > button span {
+  color: var(--gray);
+}
+
 // The 404 page builds its backlinks from the missing slug at runtime.
 body[data-slug="404"] .sidebar.right > :not(.not-found-backlinks) {
   display: none;
