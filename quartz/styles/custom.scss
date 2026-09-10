@@ -33,7 +33,7 @@ html[saved-theme] body article blockquote:not(.callout) {
 
 // Abecedarium uses its muted colour for every paragraph in dark mode.
 // Keep article copy bright while making publication metadata more subdued.
-:root[saved-theme="dark"] body article.popover-hint p {
+:root[saved-theme="dark"] body article p {
   color: var(--text-normal);
 }
 
@@ -46,12 +46,25 @@ html[saved-theme] body article blockquote:not(.callout) {
   margin-bottom: 0.75rem;
 }
 
-// Explorer folders without an authored landing page still open their generated listing,
-// but look muted so they are distinct from folders backed by a real note.
-.folder-container.folder-without-page div > a,
-.folder-container.folder-without-page div > a:hover,
-.folder-container.folder-without-page div > button span {
-  color: var(--gray);
+// Explorer is rebuilt asynchronously after navigation. Start every folder muted so
+// generated listings never flash as authored links while their metadata is loading.
+.explorer .folder-container > .folder-icon,
+.explorer .folder-container div > a,
+.explorer .folder-container div > a:hover,
+.explorer .folder-container div > button span {
+  color: var(--text-faint) !important;
+}
+
+// Restore the Explorer theme colours only for folders backed by an authored note.
+.explorer .folder-container.folder-with-page > .folder-icon,
+.explorer .folder-container.folder-with-page div > a,
+.explorer .folder-container.folder-with-page div > button span {
+  color: var(--secondary) !important;
+}
+
+.explorer .folder-container.folder-with-page > .folder-icon:hover,
+.explorer .folder-container.folder-with-page div > a:hover {
+  color: var(--tertiary) !important;
 }
 
 // The 404 page builds its backlinks from the missing slug at runtime.
