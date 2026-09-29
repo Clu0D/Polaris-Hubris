@@ -16,3 +16,6 @@ for inline **Fantasy Content Generator** to work:
 - Choose something with the arrow keys and Enter.
 
 Ctrl+Shift+R - translate
+
+Links
+homebrew: https://freshcutgrass.app
