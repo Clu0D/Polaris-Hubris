@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Bullfrog",
+    "tier": 1,
+    "type": "Bruiser",
+    "desc": "An amphibious bull-sized hybrid with springing legs.",
+    "difficulty": 11,
+    "motives": "Leap Out of Danger, Spear with Horns, Strike with Tongue",
+    "hp": 4,
+    "stress": 2,
+    "attack": 1,
+    "weapon": "Horns",
+    "range": "Melee",
+    "damage": "2d6+4 phy",
+    "thresholds": "8/13",
+    "xp": "Territorial +5",
+    "source": "homebrew",
+    "features": [
+      {
+        "name": "Tongue Strike",
+        "type": "Action",
+        "desc": "Make an attack against a target within Close range. On a success, deal 2d6 phy damage and pull the target into melee."
+      },
+      {
+        "name": "Powerful Gore",
+        "type": "Action",
+        "desc": "Mark Stress to leap forward, making an attack with the bullfrog’s horns against all enemies in a straight line within close range. Any that are hit take 2d8+1 phy damage and must mark one armor slot. This does not reduce any damage."
+      },
+      {
+        "name": "Leaping Dodge",
+        "type": "Reaction",
+        "desc": "Whenever an attack against this creature misses, the bullfrog may leap anywhere within Far range."
+      }
+    ]
+  }
+]
