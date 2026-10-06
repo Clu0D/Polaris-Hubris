@@ -17,5 +17,7 @@ for inline **Fantasy Content Generator** to work:
 
 Ctrl+Shift+R - translate
 
+For spell check to work, vpn is needed.
+
 Links
 homebrew: https://freshcutgrass.app
