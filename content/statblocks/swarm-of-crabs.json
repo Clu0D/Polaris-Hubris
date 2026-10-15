@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Swarm of Crabs",
+    "tier": 1,
+    "type": "Horde (6/HP)",
+    "desc": "A terrifying site to behold has hundreds of chitinous crabs scuttle\nabout, pincers clacking menacingly.",
+    "difficulty": 8,
+    "motives": "Defend your territory, defend your brood, pinch, don't let go",
+    "hp": 5,
+    "stress": 2,
+    "attack": 0,
+    "weapon": "Claws",
+    "range": "Melee",
+    "damage": "1d10+4 phy",
+    "thresholds": "5/20",
+    "source": "homebrew",
+    "features": [
+      {
+        "name": "Horde (1d4+2)",
+        "type": "Passive",
+        "desc": "When the crabs have marked half or\nmore of their HP, their standard attack deals 1d4 + 2 physical\ndamage instead."
+      },
+      {
+        "name": "Strong Grip",
+        "type": "Reaction",
+        "desc": "When a target is hit by the crabs\npincers, spend a Fear to have 1d4+3 crabs latch on to the\ntarget and not let go. Failed attacks on the latched on crabs\nstrike the whomever they’re latched on instead. Other actions\nto remove the crabs may yield no damage to the target at the\nGM's discretion."
+      }
+    ]
+  }
+]

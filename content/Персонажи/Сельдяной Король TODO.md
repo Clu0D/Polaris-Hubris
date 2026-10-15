@@ -3,33 +3,33 @@ draft: "true"
 ---
 [Homebrew](https://freshcutgrass.app/homebrew?biome=Aquatic&id=w4TFS9xgQG6E43EsxYpDnA)
 ```daggerheart
-name: The Fisher King
+name: Сельдяной Король
 tier: 2
 type: Social
-desc: He is possibly the greatest fisherman who ever lived, in his own opinion anyway.
+desc: Он, вероятно, величайший рыбак, из когда-либо живших, — по крайней мере, по его собственному мнению.
 difficulty: 14
 features:
-  - name: Whale Tale
+  - name: Байка
     type: Action
-    desc: Mark a Stress to have The Fisher King begin to talk your ear off about some strange fantastical and probably untrue fish that he caught once upon a time long ago. A PC must succeed on a Presence roll to get him back on topic. On a fail they must listen to his whole story and Mark a Stress themselves.
-    flavor: Probably more than once.
-  - name: Poles For Sale
+    desc: Mark a Stress, чтобы Сельдяной Король прожжужал вам все уши о какой-то странной, фантастической, и, вероятно, выдуманной рыбе, которую он поймал когда-то давным давно. Персонаж игрока должен преуспеть в проверке Влияния, чтобы вернуть его к теме. При провале ему придётся выслушать всю историю до конца и отметить Стресс.
+    flavor: Наверняка больше чем раз.
+  - name: Удочки на продажу
     type: Action
     desc: |-
-      Sells fishing poles and will teach a PC how to fish.
-
-      Fishing Pole: can be bought from him for 8 Handfulls.
-
-      Fishing Lesson: a single PC can be taught to fish for the Low Price of 2 Bags. After getting this lesson all fishing checks thereafter are made with Advantage.
-    flavor: Give a man a fish and he'll eat for a day, teach a man to fish and he will eat for a lifetime.
-hp: 6
-stress: 8
-thresholds: 20/44
+      Продаёт удочки и может научить персонажа рыбачить.
+      
+      Удочка: может быть куплена за 8 Горстей.
+      
+      Урок Рыбалки: один персонаж может выучиться по скромной цене в 2 мешка. После получения этого урока все последующие проверки рыбалки получа приемущество.
+    flavor: Дайте человеку рыбу, и он будет сыт один день; научите человека ловить рыбу, и он будет сыт всю жизнь.
+hp: 4
+stress: 6
+thresholds: 9/18
 attack: 6
-xp: Fishing +4
-motives: Fish, Cook Fish, Fish Tales
-weapon: Fishing Pole
-range: Far
+xp: Рыбалка +4
+motives: Рыбачить, Готовить Рыбу, Травить Байки про Рыбу
+weapon: Удочка
+range: Далеко
 damage: 2d4+4
 id: ti7cqifmlm
 ```
