@@ -18,6 +18,9 @@ for inline **Fantasy Content Generator** to work:
 Ctrl+Shift+R - translate
 
 For spell check to work, vpn is needed.
-
-Links
+## Links
 homebrew: https://freshcutgrass.app
+creating cards: https://bmpolonsky.github.io/daggerheart-play/#/tools/cards/card/domain-card%3Acinder-grasp
+hope&fear:
+	Бестиарий: https://docs.google.com/document/d/1aSBNF_ag8IL9ICegToXuxhRQu2vkvKnG/edit
+Схрон: https://disk.yandex.ru/d/S25ICf3RhneLzA/Библиотека/Eng/Stonetop
