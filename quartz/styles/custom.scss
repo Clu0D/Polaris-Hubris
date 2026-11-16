@@ -5,24 +5,24 @@
 // Keep internal links text-coloured and distinguish them with subtle backgrounds.
 :root[saved-theme] body a.internal {
   color: inherit;
-  background-color: rgba(90, 200, 220, 0.40);
+  background-color: rgba(90, 200, 220, 0.4);
 }
 
 :root[saved-theme] body a.internal:hover {
   color: inherit;
-  background-color: rgba(90, 200, 220, 0.80);
+  background-color: rgba(90, 200, 220, 0.8);
 }
 
 // Missing notes, including admin-only drafts, keep normal text with a red background.
 :root[saved-theme] body a.internal.broken {
   color: inherit;
-  background-color: rgba(220, 50, 50, 0.40);
+  background-color: rgba(220, 50, 50, 0.4);
   opacity: 1;
 }
 
 :root[saved-theme] body a.internal.broken:hover {
   color: inherit;
-  background-color: rgba(220, 50, 50, 0.80);
+  background-color: rgba(220, 50, 50, 0.8);
   opacity: 1;
 }
 
@@ -65,6 +65,57 @@ html[saved-theme] body article blockquote:not(.callout) {
 .explorer .folder-container.folder-with-page > .folder-icon:hover,
 .explorer .folder-container.folder-with-page div > a:hover {
   color: var(--tertiary) !important;
+}
+
+@media all and ($mobile) {
+  // The Explorer plugin toggles this class when the mobile menu opens.
+  html.mobile-no-scroll,
+  html.mobile-no-scroll body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  .page > #quartz-body .sidebar.left:has(.explorer:not(.collapsed)) {
+    z-index: 1000;
+  }
+
+  .explorer .folder-container > .folder-icon {
+    box-sizing: content-box;
+    width: 28px;
+    height: 28px;
+    padding: 8px;
+    margin-right: 0;
+    stroke-width: 2.75px;
+  }
+
+  .page > #quartz-body .explorer .explorer-content {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    max-width: none;
+    height: 100dvh;
+    max-height: none;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 1rem max(1rem, env(safe-area-inset-bottom));
+    overflow: hidden;
+    overscroll-behavior: contain;
+  }
+
+  .explorer .explorer-content > .explorer-ul {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .explorer:not(.collapsed) > .mobile-explorer {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 101;
+  }
 }
 
 // The 404 page builds its backlinks from the missing slug at runtime.
